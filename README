@@ -1,0 +1,37 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=2583
+
+ a easy config auto complete popup plugin
+
+"             You can put a user auto popup table in you .vimrc like this:
+"             let useTable[filetype] = [[auto_exec_complete1, key_word], ...]
+"
+"             This is a example for c file.
+"             let usrTable = {}
+"             let usrTable["c"] = [
+"                         \ ["\<c-x>\<c-o>",'\k.','\k->',
+"                         \ 'gtk_\k\{2,\}','GTK_\k\{1,\}','Gtk\k\{1,\}',
+"                         \ 'g_\k\{2,\}', 'G_\k\{1,\}'],
+"                         \ ["\<c-n>",'\k\{3,\}'],
+"                         \]
+"             When you type . -> gtk_(>2char) GTK_(>1char) Gtk_(>1char) 
+"             g_(>2char) G_(>1char) than <c-x><c-o> exec.
+"             When you type >3char <c-n> exec.
+
+Blow is default auto popup table
+"defTable: {{{1
+let s:defTable = {}
+let s:defTable["*"]    = [
+            \ ["\<c-n>",'\k\{3,\}']
+            \]
+let s:defTable["c"]    = [
+            \ ["\<c-x>\<c-o>",'\k.','\k->'],
+            \ ["\<c-n>",'\k\{3,\}'],
+            \]
+let s:defTable["tex"]  = [
+            \ ["\<c-n>",'\\\k\{2,\}','\([\|{\)\.\*\k\{2,\}'],
+            \]
+let s:defTable["html"] = [
+            \ ["\<c-x>\<c-o>",'<','</','<\.\*\s\+\k','<\.\*\k\+\s\*="\k'],
+            \]
+
+
